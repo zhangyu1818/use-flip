@@ -1,0 +1,39 @@
+{
+  "name": "use-flip",
+  "version": "0.0.0",
+  "type": "module",
+  "description": "Effortless FLIP animations with a React Hook for smoother transitions.",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "typings": "index.d.ts",
+  "scripts": {
+    "prepublishOnly": "npx tsc"
+  },
+  "keywords": [
+    "react",
+    "flip",
+    "FLIP",
+    "animation",
+    "hook"
+  ],
+  "author": "zhangyu1818 <hey@zhangyu.dev>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/react": "^18.2.74",
+    "prettier": "^3.2.5",
+    "typescript": "^5.4.3"
+  },
+  "peerDependencies": {
+    "react": "*"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "semi": false,
+    "printWidth": 120,
+    "arrowParens": "avoid"
+  },
+  "files": [
+    "index.js",
+    "index.d.ts"
+  ]
+}
