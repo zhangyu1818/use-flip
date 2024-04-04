@@ -3,7 +3,12 @@
   "version": "0.0.0",
   "type": "module",
   "description": "Effortless FLIP animations with a React Hook for smoother transitions.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zhangyu1818/use-flip.git"
+  },
   "main": "index.js",
+  "module": "index.js",
   "types": "index.d.ts",
   "typings": "index.d.ts",
   "scripts": {
