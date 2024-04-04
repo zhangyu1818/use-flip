@@ -1,6 +1,6 @@
 # use-flip
 
-A React hook for performing FLIP (First, Last, Invert, Play) animations in your React applications, providing a smooth and efficient way to animate changes in element positions and dimensions.
+A zero-dependency React hook for executing FLIP (First, Last, Invert, Play) animations within your React applications. It offers a seamless and efficient method for animating changes in the positions and dimensions of elements.
 
 ## Installation
 
