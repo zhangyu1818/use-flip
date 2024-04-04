@@ -1,6 +1,6 @@
 {
   "name": "use-flip",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "description": "Effortless FLIP animations with a React Hook for smoother transitions.",
   "repository": {
