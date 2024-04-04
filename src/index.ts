@@ -12,12 +12,14 @@ function useUpdateEffect(callback: React.EffectCallback, deps: React.DependencyL
 }
 
 export interface FlipOptions {
+  dimensions?: 'width' | 'height' | true
   duration?: number
   easing?: string
-  animateDimensions?: boolean
+  fill?: FillMode
 }
+
 export function useFlip(deps: unknown[], options: FlipOptions = {}) {
-  const { duration = 300, easing = 'ease', animateDimensions = false } = options
+  const { duration = 300, easing = 'ease', fill = 'auto', dimensions } = options
 
   const ref = React.useRef<HTMLElement | null>(null)
   const currentRectRef = React.useRef<DOMRect | null>(null)
@@ -40,20 +42,30 @@ export function useFlip(deps: unknown[], options: FlipOptions = {}) {
     const deltaX = currentRectRef.current!.x - nextRect.x
     const deltaY = currentRectRef.current!.y - nextRect.y
 
-    ref.current.animate(
-      [
-        {
-          transform: `translate(${deltaX}px, ${deltaY}px)`,
-          ...(animateDimensions ? { width: currentRectRef.current!.width } : {}),
-        },
-        { transform: 'translate(0, 0)', ...(animateDimensions ? { width: nextRect.width } : {}) },
-      ],
-      {
-        duration,
-        easing,
-        fill: 'forwards',
-      },
-    )
+    let from: Record<string, string> = {
+      transform: `translate(${deltaX}px, ${deltaY}px)`,
+    }
+
+    let to: Record<string, string> = {
+      transform: 'translate(0, 0)',
+    }
+
+    if (dimensions === true) {
+      from = { ...from, width: `${currentRectRef.current!.width}px`, height: `${currentRectRef.current!.height}px` }
+      to = { ...to, width: `${nextRect.width}px`, height: `${nextRect.height}px` }
+    } else if (dimensions === 'width') {
+      from = { ...from, width: `${currentRectRef.current!.width}px` }
+      to = { ...to, width: `${nextRect.width}px` }
+    } else if (dimensions === 'height') {
+      from = { ...from, height: `${currentRectRef.current!.height}px` }
+      to = { ...to, height: `${nextRect.height}px` }
+    }
+
+    ref.current.animate([from, to], {
+      duration,
+      easing,
+      fill,
+    })
 
     currentRectRef.current = nextRect
   }, deps)

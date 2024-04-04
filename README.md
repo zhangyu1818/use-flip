@@ -12,6 +12,8 @@ pnpm install use-flip
 
 Here's a basic example to get you started:
 
+[![Edit use-flip](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/p/sandbox/use-flip-hpmjxz)
+
 ```jsx
 import React, { useState } from 'react'
 import { useFlip } from 'use-flip'
@@ -21,7 +23,7 @@ function ExpandableComponent() {
   const flipRef = useFlip([expanded], {
     duration: 300,
     easing: 'ease-in-out',
-    animateDimensions: true,
+    dimensions: 'height',
   })
 
   return (
@@ -51,9 +53,10 @@ function ExpandableComponent() {
 
 #### Options
 
-- `duration?: number` - The duration of the animation in milliseconds. Default is `300`.
-- `easing?: string` - The CSS easing function to use for the animation. Default is `'ease'`.
-- `animateDimensions?: boolean` - Whether to include width and height changes in the animation. Default is `false`.
+- `dimensions?: 'width' | 'height' | true` - Specifies whether to animate width and/or height. If set to `true`, both width and height are animated.
+- `duration?: number` - The duration of the animation, in milliseconds. The default is `300`.
+- `easing?: string` - The CSS easing function for the animation. The default is `'ease'`.
+- `fill?: FillMode` - The fill mode of the animation, determining the styling of the element before and after the animation. The default is `'auto'`.
 
 ## Contributing
 
